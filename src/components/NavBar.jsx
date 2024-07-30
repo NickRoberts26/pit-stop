@@ -21,7 +21,7 @@ const NavBar = () => {
                     Sign Up
                 </NavLink>
                 <NavLink
-                to='/'
+                to='/profile'
                 className={linkClass}
                 >
                     Profile

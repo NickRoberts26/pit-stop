@@ -1,4 +1,18 @@
 {
+    "posts" : [
+        {
+            "id": 1,
+            "content": "Carlos Sainz has finally released some pressure in the driver market by choosing his ride for 2025, the Spaniard committing his future to James Vowles's rebuild project at Williams. With other offers on the table, why did he choose the iconic British team and what does it mean for the rest of the driver market?"
+        },
+        {
+            "id": 2,
+            "content": "George Russell looked to have pulled off the most sensational of victories with a drive so good, his boss Toto Wolff called him the “Tyre Whisperer”. However, the stewards stripped him of the win after the race."
+        },
+        {
+            "id": 3,
+            "content": "Sergio Perez has said he's had 'enough of the speculation' around his Red Bull future as he reacted to a 'really bad race' in the Belgian Grand Prix."
+        }
+    ],
     "drivers" : [
         {
             "id": 1,
