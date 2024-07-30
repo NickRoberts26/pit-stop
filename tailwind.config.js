@@ -7,8 +7,13 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-
+        exo: ['Exo', 'sans-serif']
       },
+      colors: {
+        'racing-red': '#ff232b',
+        'mercedes': '#27F4D2',
+        'red-bull-racing': '#3671C6'
+      }
     },
   },
   plugins: [],

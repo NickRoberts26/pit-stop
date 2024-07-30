@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.border-mercedes { border-color: #27F4D2; }
+.border-red-bull-racing { border-color: #3671C6; }
+.border-ferrari { border-color: #E8002D; }
+.border-mclaren { border-color: #FF8000; }
+.border-alpine { border-color: #FF87BC; }
+.border-rb { border-color: #6692FF; }
+.border-aston-martin { border-color: #229971; }
+.border-williams { border-color: #64C4FF; }
+.border-kick-sauber { border-color: #52E252; }
+.border-haas { border-color: #B6BABD; }

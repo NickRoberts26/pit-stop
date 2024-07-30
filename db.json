@@ -1,0 +1,144 @@
+{
+    "drivers" : [
+        {
+            "id": 1,
+            "name": "Max Verstappen",
+            "nationality": "NED",
+            "team": "Red Bull Racing",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/red-bull-racing-logo.png"
+        },
+        {
+            "id": 2,
+            "name": "Sergio Perez",
+            "nationality": "MEX",
+            "team": "Red Bull Racing",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/red-bull-racing-logo.png"
+        },
+        {
+            "id": 3,
+            "name": "Charles Leclerc",
+            "nationality": "MON",
+            "team": "Ferrari",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png"
+        },
+        {
+            "id": 4,
+            "name": "Carlos Sainz",
+            "nationality": "ESP",
+            "team": "Ferrari",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/ferrari-logo.png"
+        },
+        {
+            "id": 5,
+            "name": "Lewis Hamilton",
+            "nationality": "GBR",
+            "team": "Mercedes",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/mercedes-logo.png"
+        },
+        {
+            "id": 6,
+            "name": "George Russell",
+            "nationality": "GBR",
+            "team": "Mercedes",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/mercedes-logo.png"
+        },
+        {
+            "id": 7,
+            "name": "Lando Norris",
+            "nationality": "GBR",
+            "team": "McLaren",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/mclaren-logo.png"
+        },
+        {
+            "id": 8,
+            "name": "Oscar Piastri",
+            "nationality": "AUS",
+            "team": "McLaren",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/mclaren-logo.png"
+        },
+        {
+            "id": 9,
+            "name": "Fernando Alonso",
+            "nationality": "ESP",
+            "team": "Aston Martin",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/aston-martin-logo.png"
+        },
+        {
+            "id": 10,
+            "name": "Lance Stroll",
+            "nationality": "CAN",
+            "team": "Aston Martin",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/aston-martin-logo.png"
+        },
+        {
+            "id": 11,
+            "name": "Esteban Ocon",
+            "nationality": "FRA",
+            "team": "Alpine",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/alpine-logo.png"
+        },
+        {
+            "id": 12,
+            "name": "Pierre Gasly",
+            "nationality": "FRA",
+            "team": "Alpine",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/alpine-logo.png"
+        },
+        {
+            "id": 13,
+            "name": "Valtteri Bottas",
+            "nationality": "FIN",
+            "team": "Kick Sauber",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/kick-sauber-logo.png"
+        },
+        {
+            "id": 14,
+            "name": "Zhou Guanyu",
+            "nationality": "CHN",
+            "team": "Kick Sauber",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/kick-sauber-logo.png"
+        },
+        {
+            "id": 15,
+            "name": "Kevin Magnussen",
+            "nationality": "DEN",
+            "team": "Haas",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/haas-logo.png"
+        },
+        {
+            "id": 16,
+            "name": "Nico Hulkenberg",
+            "nationality": "GER",
+            "team": "Haas",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/haas-logo.png"
+        },
+        {
+            "id": 17,
+            "name": "Yuki Tsunoda",
+            "nationality": "JPN",
+            "team": "RB",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/rb-logo.png"
+        },
+        {
+            "id": 18,
+            "name": "Daniel Ricciardo",
+            "nationality": "AUS",
+            "team": "RB",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/rb-logo.png"
+        },
+        {
+            "id": 19,
+            "name": "Alexander Albon",
+            "nationality": "THA",
+            "team": "Williams",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/williams-logo.png"
+        },
+        {
+            "id": 20,
+            "name": "Logan Sargeant",
+            "nationality": "USA",
+            "team": "Williams",
+            "logo": "https://media.formula1.com/content/dam/fom-website/teams/2024/williams-logo.png"
+        }
+    ]
+}
