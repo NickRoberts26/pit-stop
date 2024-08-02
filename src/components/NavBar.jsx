@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
-import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import { useAuth } from '../auth/AuthContext';
 
 const NavBar = () => {
-    const [user, setUser] = useState(null);
+    const { currentUser } = useAuth();
 
     async function handleLogout() {
         try {
@@ -14,14 +13,6 @@ const NavBar = () => {
             console.log(error);
         }
     }
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-    
-        return () => unsubscribe();
-    }, []);
 
     const linkClass = 'text-black text-2xl mx-4';
 
@@ -34,7 +25,7 @@ const NavBar = () => {
                     <img className='w-[120px] hover:translate-x-2 transition-translate duration-200' src="src/assets/logo.png" alt="" />
                 </NavLink>
                 <div>
-                    {user ? (
+                    {currentUser ? (
                         <NavLink
                         to='/'
                         className={linkClass}

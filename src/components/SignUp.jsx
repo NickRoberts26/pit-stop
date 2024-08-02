@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -34,13 +35,16 @@ function SignUp() {
   };
 
   return (
-    <form className="flex flex-col w-1/2" onSubmit={handleSignUp}>
-        <input type="text" className="mb-4" placeholder="First Name" value={fname} onChange={(e) => setFname(e.target.value)} />
-        <input type="text" className="mb-4" placeholder="Last Name" value={lname} onChange={(e) => setLname(e.target.value)} />
-        <input type="email" className="mb-4" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" className="mb-4" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button type="submit">Sign Up</button>
-    </form>
+    <div className="w-1/2 mx-auto bg-racing-red border-2 border-white rounded-lg p-4">
+      <form className="flex flex-col items-center" onSubmit={handleSignUp}>
+          <input type="text" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="First Name" value={fname} onChange={(e) => setFname(e.target.value)} />
+          <input type="text" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Last Name" value={lname} onChange={(e) => setLname(e.target.value)} />
+          <input type="email" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <button className="bg-white w-fit py-2 px-4 rounded-lg">Login</button>
+      </form>
+      <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/">Login here</Link></p>
+    </div>
   );
 }
 

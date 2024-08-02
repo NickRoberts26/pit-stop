@@ -5,19 +5,16 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "./firebase";
 import { ToastContainer } from 'react-toastify';
 
 function App() {
-  const [user] = useAuthState(auth);
 
   return (
     <Router>
       <Routes>
         <Route path='/' element={<MainLayout />}>
-          <Route path="/" element={<Login />} />
-          <Route index path="/dashboard" element={<HomePage /> } />
+          <Route index path="/" element={<HomePage /> } />
+          <Route index path="/login" element={<Login /> } />
           <Route path="/signup" element={<SignUp />} />
           <Route path='/profile' element={<ProfilePage />} />
         </Route>
