@@ -8,10 +8,19 @@ const CreatePost = () => {
     const [rotation, setRotation] = useState(0);
     const [newContent, setNewContent] = useState('');
     const [newTag, setNewTag] = useState();
+    const [time, setTime] = useState();
 
     const { currentUser } = useAuth();
     const postsCollectionRef = collection(db, "Posts");
 
+    const getDate = () => {
+        const a = firebase.firestore
+            .Timestamp.now()
+            .toDate().toString();
+        return a;
+    }
+
+    //Handles the spinning wheel on type
     const handleKeyPress = (event) => {
         if (event.key === 'Backspace') {
           setRotation(prevRotation => prevRotation - 10);
@@ -20,8 +29,9 @@ const CreatePost = () => {
         }
     };
 
+    //Creates the new post
     const createPost = async () => {
-        await addDoc(postsCollectionRef, {userId: currentUser.uid, content: newContent});
+        await addDoc(postsCollectionRef, {userId: currentUser.uid, content: newContent, tag: newTag, time: getDate()});
     }
 
     return (
@@ -53,11 +63,12 @@ const CreatePost = () => {
                         <div>
                             <h3 className='mb-2'>Tag</h3>
                             <select onChange={(e) => {setNewTag(e.target.value)}} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-red-500 block w-full p-2.5' name="" id="">
-                                <option value="generalDiscussion">General Discussion</option>
-                                <option value="raceNews">Race News</option>
-                                <option value="remour">Rumour</option>
-                                <option value="">Question</option>
-                                <option value="">Meme</option>
+                                <option value="General Discussion">General Discussion</option>
+                                <option value="Race News">Race News</option>
+                                <option value="Rumour">Rumour</option>
+                                <option value="Question">Question</option>
+                                <option value="Meme">Meme</option>
+                                <option value="Technical">Technical</option>
                             </select>
                         </div>
                         <button onClick={createPost} className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg'>Submit</button>

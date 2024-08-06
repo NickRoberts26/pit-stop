@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyBrAaSXE4GQTs4fdHgdKFM4k3hzft-G-28',
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "pit-stop-3ff35.firebaseapp.com",
     projectId: "pit-stop-3ff35",
     storageBucket: "pit-stop-3ff35.appspot.com",
     messagingSenderId: "1007486521237",
-    appId: '1:1007486521237:web:af1122d54906a89641f09c'
+    appId: process.env.FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
