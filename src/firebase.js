@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "pit-stop-3ff35.firebaseapp.com",
     projectId: "pit-stop-3ff35",
     storageBucket: "pit-stop-3ff35.appspot.com",
     messagingSenderId: "1007486521237",
-    appId: process.env.FIREBASE_APP_ID
+    appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);

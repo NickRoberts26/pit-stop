@@ -14,3 +14,10 @@
 .border-williams { border-color: #64C4FF; }
 .border-kick-sauber { border-color: #52E252; }
 .border-haas { border-color: #B6BABD; }
+
+.generaldiscussion { background-color: orange; }
+.racenews { background-color: yellow; }
+.rumour { background-color: lightblue; }
+.question { background-color: greenyellow; }
+.meme { background-color: plum; }
+.technical { background-color: lightcoral; }

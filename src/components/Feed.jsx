@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 import DriverList from './DriverList'
 import Post from './Post';
-import { collection, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const Feed = () => {
@@ -13,17 +13,9 @@ const Feed = () => {
 
     
     useEffect(() => {
-        /*
-        const getPosts = async () => {
-            const data = await getDocs(postsCollectionRef)
-            setPosts(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-        }
+        const postsQuery = query(postsCollectionRef, orderBy('timestamp', 'desc'));
 
-        getPosts();
-        */
-
-        //Try this version for reduced reads
-        const unsubscribe = onSnapshot(postsCollectionRef, (snapshot) => {
+        const unsubscribe = onSnapshot(postsQuery, (snapshot) => {
             setPosts(snapshot.docs.map(doc => ({...doc.data(), id: doc.id})));
         });
     
@@ -34,9 +26,8 @@ const Feed = () => {
         <>
             <div className="flex">
                 <div className='w-[70%] bg-white border-2 border-white rounded-xl p-4'>
-                    <Post />
                     {posts.map((post, _) => {
-                        return <Post key={post.id} content={post.content} tag={post.tag} time={post.time} userId={post.userId} />
+                        return <Post key={post.id} content={post.content} tag={post.tag} createdAt={post.createdAt} userId={post.userId} />
                     })}
                 </div>
                 <DriverList />

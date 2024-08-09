@@ -1,24 +1,16 @@
 import React from 'react'
 import { useState } from 'react';
 import { useAuth } from '../auth/AuthContext';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { db } from '../firebase';
 
 const CreatePost = () => {
     const [rotation, setRotation] = useState(0);
     const [newContent, setNewContent] = useState('');
     const [newTag, setNewTag] = useState();
-    const [time, setTime] = useState();
 
     const { currentUser } = useAuth();
     const postsCollectionRef = collection(db, "Posts");
-
-    const getDate = () => {
-        const a = firebase.firestore
-            .Timestamp.now()
-            .toDate().toString();
-        return a;
-    }
 
     //Handles the spinning wheel on type
     const handleKeyPress = (event) => {
@@ -31,7 +23,25 @@ const CreatePost = () => {
 
     //Creates the new post
     const createPost = async () => {
-        await addDoc(postsCollectionRef, {userId: currentUser.uid, content: newContent, tag: newTag, time: getDate()});
+
+        const formattedDate = new Date().toLocaleString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+            month: 'long',
+            day: 'numeric',
+            year: 'numeric'
+        });
+
+        await addDoc(postsCollectionRef, {
+            userId: currentUser.uid,
+            content: newContent,
+            tag: newTag,
+            createdAt: formattedDate,
+            timestamp: Timestamp.now()
+        });
+
+        setNewContent('');
     }
 
     return (
@@ -46,6 +56,7 @@ const CreatePost = () => {
                             placeholder='Create Post'
                             className='w-full bg-slate-200 rounded-lg p-2'
                             onKeyDown={handleKeyPress}
+                            value={newContent}
                             onChange={(e) => {setNewContent(e.target.value)}}
                         ></textarea>
                     ) : (
