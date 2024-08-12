@@ -37,6 +37,7 @@ const CreatePost = () => {
             userId: currentUser.uid,
             content: newContent,
             tag: newTag,
+            likeCount: 0,
             createdAt: formattedDate,
             timestamp: Timestamp.now()
         });

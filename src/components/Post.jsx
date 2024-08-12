@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { db } from '../firebase';
+import { useAuth } from '../auth/AuthContext';
 
 const usersCollectionRef = collection(db, "Users");
 
@@ -9,9 +10,11 @@ const getUsers = async () => {
   return data.docs.map((doc) => ({...doc.data(), id: doc.id}));
 }
 
-const Post = ({content, userId, tag, createdAt}) => {
-  const [users, setUsers] = useState([]);
+const Post = ({postId, content, userId, tag, createdAt, likes}) => {
   const [poster, setPoster] = useState(null);
+  const [likeCount, setLikeCount] = useState(likes);
+  const [hasLiked, setHasLiked] = useState(false);
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,10 +23,34 @@ const Post = ({content, userId, tag, createdAt}) => {
       if (user) {
         setPoster(user);
       }
+
+      const postDocRef = doc(db, 'Posts', postId);
+      const postDoc = await getDoc(postDocRef);
+      if (postDoc.exists()) {
+        const postData = postDoc.data();
+        setLikeCount(postData.likeCount || 0);
+        setHasLiked(postData.likedBy?.includes(currentUser.uid));
+      }
     };
 
     fetchData();
-  }, [userId]);
+  }, [userId, postId, currentUser]);
+
+  const handleLike = async () => {
+    if(hasLiked) return; //Stops user from liking more than once
+
+    const postDocRef = doc(db, 'Posts', postId);
+    const newLikeCount = likeCount + 1;
+    
+    // Update the like count in Firestore
+    await updateDoc(postDocRef, { 
+      likeCount: newLikeCount, 
+      likedBy: arrayUnion(currentUser.uid) 
+    });
+
+    setLikeCount(newLikeCount);
+    setHasLiked(true);
+  };
 
   return (
     <>
@@ -38,7 +65,13 @@ const Post = ({content, userId, tag, createdAt}) => {
         <div className='content mb-2'>
           <p>{content}</p>
         </div>
-        <p className='text-gray-400 text-sm w-fit ml-auto'>{createdAt}</p>
+        <div className='flex'>
+          <div className='flex'>
+            <button onClick={handleLike} className='mr-4'>Like</button>
+            <p>{likeCount}</p>
+          </div>
+          <p className='text-gray-400 text-sm w-fit ml-auto'>{createdAt}</p>
+        </div>
       </div>
     </>
   )
