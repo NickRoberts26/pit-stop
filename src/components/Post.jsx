@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, getDoc, doc, updateDoc, arrayUnion } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../auth/AuthContext';
 
@@ -37,19 +37,28 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
   }, [userId, postId, currentUser]);
 
   const handleLike = async () => {
-    if(hasLiked) return; //Stops user from liking more than once
-
     const postDocRef = doc(db, 'Posts', postId);
-    const newLikeCount = likeCount + 1;
-    
-    // Update the like count in Firestore
-    await updateDoc(postDocRef, { 
-      likeCount: newLikeCount, 
-      likedBy: arrayUnion(currentUser.uid) 
-    });
+    if (hasLiked) {
+      const newLikeCount = likeCount - 1;
 
-    setLikeCount(newLikeCount);
-    setHasLiked(true);
+      await updateDoc(postDocRef, { 
+        likeCount: newLikeCount, 
+        likedBy: arrayRemove(currentUser.uid) 
+      });
+
+      setLikeCount(newLikeCount);
+      setHasLiked(false);
+    } else {
+      const newLikeCount = likeCount + 1;
+
+      await updateDoc(postDocRef, { 
+        likeCount: newLikeCount, 
+        likedBy: arrayUnion(currentUser.uid) 
+      });
+
+      setLikeCount(newLikeCount);
+      setHasLiked(true);
+    }
   };
 
   return (
@@ -67,8 +76,8 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
         </div>
         <div className='flex'>
           <div className='flex'>
-            <button onClick={handleLike} className='mr-4'>Like</button>
-            <p>{likeCount}</p>
+            <button onClick={handleLike} className={`${hasLiked ? 'bg-green-600 hover:bg-red-600' : 'bg-red-600 hover:bg-green-600'} text-white mr-4 border px-3 py-1 text-sm rounded-lg`}>Like</button>
+            <div className='flex items-center'>{likeCount}</div>
           </div>
           <p className='text-gray-400 text-sm w-fit ml-auto'>{createdAt}</p>
         </div>

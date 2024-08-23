@@ -71,9 +71,9 @@ const CreatePost = () => {
                             onChange={(e) => {setNewContent(e.target.value)}}
                         ></textarea>
                     )}
-                    <div className='flex w-full justify-between items-center'>
-                        <div>
-                            <h3 className='mb-2'>Tag</h3>
+                    <div className='flex w-full justify-between items-center pt-2'>
+                        <div className='flex items-center'>
+                            <h3 className='mb-2 mr-4'>Tag</h3>
                             <select onChange={(e) => {setNewTag(e.target.value)}} className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-red-500 block w-full p-2.5' name="" id="">
                                 <option value="General Discussion">General Discussion</option>
                                 <option value="Race News">Race News</option>
