@@ -39,7 +39,8 @@ const CreatePost = () => {
             tag: newTag,
             likeCount: 0,
             createdAt: formattedDate,
-            timestamp: Timestamp.now()
+            timestamp: Timestamp.now(),
+            comments: []
         });
 
         setNewContent('');

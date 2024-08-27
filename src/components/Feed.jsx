@@ -17,6 +17,7 @@ const Feed = () => {
 
     const handleFilter = (e) => {
         const tag = e.target.textContent;
+        e.target.classList.toggle("active-filter");
         if(activeFilters.indexOf(tag) > -1) {
             setActiveFilters(activeFilters => activeFilters.filter(item => item !== tag));
         } else {
@@ -24,31 +25,18 @@ const Feed = () => {
         }
     }
 
+    //Creates the new filtered posts array
     useEffect(() => {
         setIsFiltering(activeFilters.length > 0);
 
-        //To be fixed
-        posts.forEach((post) => {
-            if(activeFilters.includes(post.tag) && filteredPosts.indexOf(post) == -1) {
-                setFilteredPosts(filteredPosts => [...filteredPosts, post]);
-            } else {
-                setFilteredPosts(filteredPosts => filteredPosts.filter(item => item !== post));
-            }
-        })
-        //
-
-        /*
-        posts.map((post, i) => {
-            if(activeFilters.indexOf(post.tag) > -1) {
-                setFilteredPosts(filteredPosts => [...filteredPosts, post]);
-            } else {
-                setFilteredPosts(filteredPosts => filteredPosts.filter(item => item !== post));
-            }
-        })
-            */
+        const newFilteredPosts = posts.filter(post => activeFilters.includes(post.tag));
+        const sortedFilteredPosts = newFilteredPosts.sort((a, b) => b.timestamp - a.timestamp);
+    
+        setFilteredPosts(sortedFilteredPosts);
         
     }, [activeFilters]);
     
+    //Fetches the posts
     useEffect(() => {
         const postsQuery = query(postsCollectionRef, orderBy('timestamp', 'desc'));
 
@@ -58,9 +46,6 @@ const Feed = () => {
     
         return () => unsubscribe();
     }, [])
-
-    console.log(activeFilters);
-    console.log(filteredPosts);
     
     return (
         <>

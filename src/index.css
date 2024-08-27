@@ -21,3 +21,7 @@
 .question { background-color: greenyellow; }
 .meme { background-color: plum; }
 .technical { background-color: lightcoral; }
+
+.active-filter {
+    border: 2px solid black;
+}

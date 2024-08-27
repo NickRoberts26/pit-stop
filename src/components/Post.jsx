@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, getDoc, doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../auth/AuthContext';
+import CreateComment from './CreateComment';
+import CommentFeed from './CommentFeed';
 
 const usersCollectionRef = collection(db, "Users");
 
@@ -14,6 +16,8 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
   const [poster, setPoster] = useState(null);
   const [likeCount, setLikeCount] = useState(likes);
   const [hasLiked, setHasLiked] = useState(false);
+  const [commentReveal, setCommentReveal] = useState(false);
+
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -80,6 +84,17 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
             <div className='flex items-center'>{likeCount}</div>
           </div>
           <p className='text-gray-400 text-sm w-fit ml-auto'>{createdAt}</p>
+        </div>
+        <div className='mt-2'>
+          <button className='text-xs hover:underline' onClick={() => {commentReveal ? setCommentReveal(false) : setCommentReveal(true)}}>{commentReveal ? "Hide" : "View"} Comments</button>
+          {commentReveal ? (
+            <div>
+              <CommentFeed postId={postId} getUsers={getUsers}/>
+              <CreateComment postId={postId}/>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
