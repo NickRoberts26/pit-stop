@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import ProfileBio from "../components/ProfileBio";
 
 const ProfilePage = () => {
+  const [theme, setTheme] = useState('default-theme');
+  const [team, setTeam] = useState('');
+
+  const themeHandler = (e) => {
+    setTheme("theme-" + e.target.value.replace(/\s+/g, '').toLowerCase());
+    setTeam(e.target.value);
+  }
 
   const [userDetails, setUserDetails] = useState(null);
   const fetchUserData = async () => {
@@ -23,6 +31,9 @@ const ProfilePage = () => {
     fetchUserData();
   }, []);
 
+  console.log(theme);
+
+  /*
   async function handleLogout() {
     try {
       await auth.signOut();
@@ -32,20 +43,16 @@ const ProfilePage = () => {
       console.error("Error logging out:", error.message);
     }
   }
+  */
 
   return (
     <>
       {userDetails ? (
-        <div className='bg-white rounded-lg p-8'>
-          <div className='flex'>
-              <img className='rounded-full w-[200px]' src="src/assets/me.jpg" alt="" />
-              <header>
-                  <h1>{userDetails.firstName} {userDetails.lastName}</h1>
-              </header>
-          </div>
-      </div>
+        <div className={`${theme} rounded-lg p-8`}>
+          <ProfileBio userDetails={userDetails} themeHandler={themeHandler} team={team} />
+        </div>
       ) : (
-        <div>fail</div>
+        <div>No User</div>
       )}
     </>
   )

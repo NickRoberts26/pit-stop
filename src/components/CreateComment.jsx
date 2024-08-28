@@ -47,7 +47,7 @@ const CreateComment = ({ postId }) => {
             placeholder="Add a comment..." 
             className='w-full bg-slate-200 rounded-lg p-2'
         ></textarea>
-        <button type="submit" className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg'>Post</button>
+        <button type="submit" className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg hover:bg-slate-300'>Post</button>
         </form>
     );
 };

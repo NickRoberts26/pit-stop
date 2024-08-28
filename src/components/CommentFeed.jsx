@@ -26,7 +26,7 @@ const CommentFeed = ({ postId }) => {
         };
     
         fetchPost();
-    }, [postId]);
+    }, [postId, post]);
 
     if (loading) {
         return <p>Loading post...</p>;
@@ -37,14 +37,14 @@ const CommentFeed = ({ postId }) => {
     }
     
     return (
-        <div>
+        <div className='mt-4'>
             <ul>
                 {post.comments && post.comments.length > 0 ? (
                 post.comments.map((comment, index) => (
                     <Comment key={index} commentText={comment.commentText} userId={comment.userId} createdAt={comment.createdAt} />
                 ))
                 ) : (
-                <p>No comments yet.</p>
+                <p className='mb-6 text-sm'>No comments yet.</p>
                 )}
             </ul>
         </div>

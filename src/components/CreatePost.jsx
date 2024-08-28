@@ -84,7 +84,7 @@ const CreatePost = () => {
                                 <option value="Technical">Technical</option>
                             </select>
                         </div>
-                        <button onClick={createPost} className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg'>Submit</button>
+                        <button onClick={createPost} className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg hover:bg-slate-300'>Submit</button>
                     </div>
                 </div>
             </div>

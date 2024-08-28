@@ -15,6 +15,62 @@
 .border-kick-sauber { border-color: #52E252; }
 .border-haas { border-color: #B6BABD; }
 
+.default-theme {
+    background-color: white;
+    border: none;
+}
+
+.theme-mclaren { 
+    background-color: #FF8000;
+    border: 2px solid black;
+}
+
+.theme-redbullracing { 
+    background-color: #00162b;
+    border: 2px solid white;
+    color: white;
+}
+
+.theme-mercedes { 
+    background-color: #27F4D2;
+    border: 2px solid #C8CCCE;
+}
+
+.theme-ferrari { 
+    background-color: #E8002D;
+    border: 2px solid #f8e823;
+}
+
+.theme-alpine { 
+    background-color: #2173B8;
+    border: 2px solid #FF87BC;
+}
+
+.theme-rb { 
+    background-color: #6692FF;
+    border: 2px solid white;
+}
+
+.theme-astonmartin { 
+    background-color: #229971;
+    border: 2px solid #CEFc00;
+}
+
+.theme-williams { 
+    background-color: #64C4FF;
+    border: 2px solid #00162b;
+}
+
+.theme-kicksauber { 
+    background-color: #52E252;
+    border: 2px solid black;
+}
+
+.theme-haas { 
+    background-color: white;
+    border: 2px solid #E8002D;
+}
+
 .generaldiscussion { background-color: orange; }
 .racenews { background-color: yellow; }
 .rumour { background-color: lightblue; }

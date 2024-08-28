@@ -34,7 +34,7 @@ const Comment = ({ commentText, userId, createdAt }) => {
                 </div>
                 <p className='text-gray-400 text-xs w-fit ml-auto'>{createdAt}</p>
             </div>
-            {commentText}
+            <p className='text-sm'>{commentText}</p>
         </div>
     )
 }

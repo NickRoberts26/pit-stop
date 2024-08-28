@@ -80,8 +80,8 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
         </div>
         <div className='flex'>
           <div className='flex'>
-            <button onClick={handleLike} className={`${hasLiked ? 'bg-green-600 hover:bg-red-600' : 'bg-red-600 hover:bg-green-600'} text-white mr-4 border px-3 py-1 text-sm rounded-lg`}>Like</button>
-            <div className='flex items-center'>{likeCount}</div>
+            <button onClick={handleLike} className={`${hasLiked ? 'bg-green-600 hover:bg-red-600' : 'bg-red-600 hover:bg-green-600'} text-white mr-2 border px-2 py-0.5 text-xs rounded-lg`}>Like</button>
+            <div className='flex items-center text-xs'>{likeCount}</div>
           </div>
           <p className='text-gray-400 text-sm w-fit ml-auto'>{createdAt}</p>
         </div>

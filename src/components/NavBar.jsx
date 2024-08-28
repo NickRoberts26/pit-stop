@@ -17,7 +17,7 @@ const NavBar = () => {
     const linkClass = 'text-black text-2xl mx-4';
 
     return (
-        <div className='bg-white w-full mb-10'>
+        <div className='bg-white w-full mb-10 font-exo'>
             <nav className='flex justify-between p-6'>
                 <NavLink
                 to='/'
@@ -42,7 +42,7 @@ const NavBar = () => {
                         </NavLink>
                     )}
                     <NavLink
-                    to='/profile'
+                    to={`/profile/${currentUser.uid}`}
                     className={linkClass}
                     >
                         Profile
