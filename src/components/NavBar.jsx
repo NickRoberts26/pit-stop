@@ -26,6 +26,7 @@ const NavBar = () => {
                 </NavLink>
                 <div>
                     {currentUser ? (
+                        <>
                         <NavLink
                         to='/'
                         className={linkClass}
@@ -33,6 +34,13 @@ const NavBar = () => {
                         >
                             Logout
                         </NavLink>
+                        <NavLink
+                        to={`/profile/${currentUser.uid}`}
+                        className={linkClass}
+                        >
+                            Profile
+                        </NavLink>
+                        </>
                     ) : (
                         <NavLink
                         to='/login'
@@ -41,12 +49,6 @@ const NavBar = () => {
                             Login
                         </NavLink>
                     )}
-                    <NavLink
-                    to={`/profile/${currentUser.uid}`}
-                    className={linkClass}
-                    >
-                        Profile
-                    </NavLink>
                 </div>
             </nav>
         </div>

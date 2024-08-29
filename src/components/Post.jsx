@@ -4,6 +4,7 @@ import { db } from '../firebase';
 import { useAuth } from '../auth/AuthContext';
 import CreateComment from './CreateComment';
 import CommentFeed from './CommentFeed';
+import { Link } from 'react-router-dom';
 
 const usersCollectionRef = collection(db, "Users");
 
@@ -69,10 +70,10 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
     <>
       <div className="border rounded-lg mb-6 p-4">
         <div className='flex justify-between items-center mb-2'>
-          <div className='flex items-center'>
+          <Link to={`/profile/${userId}`} className='flex items-center'>
             <img className='w-10 rounded-full' src="src/assets/me.jpg" alt="" />
             <p className='font-bold text-lg ml-3'> {poster ? `${poster.firstName} ${poster.lastName}` : 'Loading...'}</p>
-          </div>
+          </Link>
           <p className={`${tag ? tag.replace(/\s+/g, '').toLowerCase() : tag} font-bold text-sm w-fit h-fit px-2 rounded-xl`}>{tag}</p>
         </div>
         <div className='content mb-2'>

@@ -19,6 +19,7 @@ function SignUp() {
       console.log(user);
       if(user) {
         await setDoc(doc(db, "Users", user.uid), {
+            id: user.uid,
             email: user.email,
             firstName: fname,
             lastName: lname,
@@ -41,9 +42,9 @@ function SignUp() {
           <input type="text" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Last Name" value={lname} onChange={(e) => setLname(e.target.value)} />
           <input type="email" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="password" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button className="bg-white w-fit py-2 px-4 rounded-lg">Login</button>
+          <button className="bg-white w-fit py-2 px-4 rounded-lg">Sign Up</button>
       </form>
-      <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/">Login here</Link></p>
+      <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/login">Login here</Link></p>
     </div>
   );
 }
