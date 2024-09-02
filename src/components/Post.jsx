@@ -13,7 +13,7 @@ const getUsers = async () => {
   return data.docs.map((doc) => ({...doc.data(), id: doc.id}));
 }
 
-const Post = ({postId, content, userId, tag, createdAt, likes}) => {
+const Post = ({postId, content, userId, tag, createdAt, likes, comments}) => {
   const [poster, setPoster] = useState(null);
   const [likeCount, setLikeCount] = useState(likes);
   const [hasLiked, setHasLiked] = useState(false);
@@ -71,8 +71,9 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
       <div className="border rounded-lg mb-6 p-4">
         <div className='flex justify-between items-center mb-2'>
           <Link to={`/profile/${userId}`} className='flex items-center'>
-            <img className='w-10 rounded-full' src="src/assets/me.jpg" alt="" />
+            <img className='w-10 rounded-full' src={poster ? `../${poster.driver.replace(/\s+/g, '').toLowerCase()}.png` : '../default-avatar.jpg'} alt="" />
             <p className='font-bold text-lg ml-3'> {poster ? `${poster.firstName} ${poster.lastName}` : 'Loading...'}</p>
+            <p></p>
           </Link>
           <p className={`${tag ? tag.replace(/\s+/g, '').toLowerCase() : tag} font-bold text-sm w-fit h-fit px-2 rounded-xl`}>{tag}</p>
         </div>
@@ -91,7 +92,11 @@ const Post = ({postId, content, userId, tag, createdAt, likes}) => {
           {commentReveal ? (
             <div>
               <CommentFeed postId={postId} getUsers={getUsers}/>
-              <CreateComment postId={postId}/>
+              {comments ? (
+                <CreateComment postId={postId}/>
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             <></>

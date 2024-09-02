@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import ProfileBio from "../components/ProfileBio";
+import PersonalFeed from "../components/PersonalFeed";
 
 const ProfilePage = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -37,6 +38,7 @@ const ProfilePage = () => {
       ) : (
         <div>No User</div>
       )}
+      <PersonalFeed profileId={profileId} userDetails={userDetails} />
     </>
   )
 }

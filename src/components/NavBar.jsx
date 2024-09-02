@@ -22,7 +22,7 @@ const NavBar = () => {
                 <NavLink
                 to='/'
                 >
-                    <img className='w-[120px] hover:translate-x-2 transition-translate duration-200' src="src/assets/logo.png" alt="" />
+                    <img className='w-[120px] hover:translate-x-2 transition-translate duration-200' src="../assets/logo.png" alt="" />
                 </NavLink>
                 <div>
                     {currentUser ? (

@@ -39,6 +39,7 @@
 .theme-ferrari { 
     background-color: #E8002D;
     border: 2px solid #f8e823;
+    color: white;
 }
 
 .theme-alpine { 
@@ -49,6 +50,7 @@
 .theme-rb { 
     background-color: #6692FF;
     border: 2px solid white;
+    color: white;
 }
 
 .theme-astonmartin { 
