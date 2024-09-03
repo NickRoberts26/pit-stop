@@ -50,8 +50,8 @@ const Feed = () => {
     return (
         <>
             <Filter handleFilter={handleFilter} />
-            <div className="flex">
-                <div className='w-[70%] bg-white border-2 border-white rounded-xl p-4'>
+            <div className="flex justify-center">
+                <div className='w-full lg:w-[70%] bg-white border-2 border-white rounded-xl p-4'>
                     {isFiltering ?
                         filteredPosts.map((post, _) => {
                             return <Post key={post.id} postId={post.id} content={post.content} tag={post.tag} likes={post.likeCount} createdAt={post.createdAt} userId={post.userId} comments={true}/>

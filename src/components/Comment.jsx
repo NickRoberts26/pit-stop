@@ -29,7 +29,7 @@ const Comment = ({ commentText, userId, createdAt }) => {
         <div className='border rounded-lg p-4 mb-4'>
             <div className='flex items-center justify-between mb-2'>
                 <div className='flex items-center'>
-                    <img className='rounded-full w-[30px]' src="src/assets/me.jpg" alt="" />
+                    <img className='rounded-full w-[30px]' src={poster ? `../${poster.driver.replace(/\s+/g, '').toLowerCase()}.png` : '../default-avatar.jpg'} alt="" />
                     <div className='ml-2'>{poster ? `${poster.firstName} ${poster.lastName}` : 'Loading...'}</div>
                 </div>
                 <p className='text-gray-400 text-xs w-fit ml-auto'>{createdAt}</p>

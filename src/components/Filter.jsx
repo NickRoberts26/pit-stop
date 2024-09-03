@@ -2,12 +2,12 @@ import React from 'react'
 
 const Filter = ({handleFilter}) => {
 
-    const style = 'font-bold text-sm w-fit h-fit px-2 mx-2 rounded-xl cursor-pointer border-2 border-white hover:border-2 hover:border-black';
+    const style = 'font-bold text-sm w-fit h-fit mt-2 px-2 mx-2 rounded-xl cursor-pointer border-2 border-white hover:border-2 hover:border-black';
 
     return (
-        <div className='flex items-center bg-white rounded-lg px-2 py-4 mb-4'>
-            <h2 className='font-bold text-xl'>Filter by: </h2>
-            <ul className='flex'>
+        <div className='lg:flex items-center bg-white rounded-lg px-2 py-4 mb-4'>
+            <h2 className='font-bold text-xl text-center lg:text-left'>Filter by: </h2>
+            <ul className='flex flex-wrap justify-center'>
                 <li onClick={handleFilter} className={`generaldiscussion ${style}`}>General Discussion</li>
                 <li onClick={handleFilter} className={`racenews ${style}`}>Race News</li>
                 <li onClick={handleFilter} className={`rumour ${style}`}>Rumour</li>

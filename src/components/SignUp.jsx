@@ -2,21 +2,23 @@ import { useState } from "react";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
 import { Link } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      console.log(user);
       if(user) {
         await setDoc(doc(db, "Users", user.uid), {
             id: user.uid,
@@ -25,13 +27,28 @@ function SignUp() {
             lastName: lname,
         });
       }
-      toast.success("User Registered Successfully!", {
-        position: "top-center"
+      toast.success('Your all signed up!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+      window.location.href= "/login" ;
     } catch (error) {
-        toast.success(error.message, {
-            position: "top-center"
-        });
+      toast.error('Signup failed: Try Again', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,9 +59,12 @@ function SignUp() {
           <input type="text" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Last Name" value={lname} onChange={(e) => setLname(e.target.value)} />
           <input type="email" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="password" className="mb-6 w-2/3 p-2 rounded-lg" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button className="bg-white w-fit py-2 px-4 rounded-lg">Sign Up</button>
+          <button className="bg-white w-[90px] py-2 px-4 rounded-lg">
+            {loading ? <ClipLoader size={20} color={"#000"} /> : 'Sign Up'}
+          </button>
       </form>
-      <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/login">Login here</Link></p>
+      <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/login" className="underline">Login here</Link></p>
+      <ToastContainer />
     </div>
   );
 }

@@ -32,7 +32,7 @@ const ProfilePage = () => {
   return (
     <>
       {userDetails ? (
-        <div className={`theme-${userDetails.team ? userDetails.team.replace(/\s+/g, '').toLowerCase() : 'default'} rounded-lg p-8`}>
+        <div className={`theme-${userDetails.team ? userDetails.team.replace(/\s+/g, '').toLowerCase() : 'default'} rounded-lg p-4 lg:p-8`}>
           <ProfileBio profileId={profileId} userDetails={userDetails} setUserDetails={setUserDetails} />
         </div>
       ) : (

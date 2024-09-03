@@ -13,7 +13,7 @@ const DriverList = () => {
     }, [])
 
     return (
-        <div className='w-[30%]'>
+        <div className='w-[30%] hidden lg:block'>
             <header className='text-center'>
                 <h3 className='text-3xl mb-6 font-exo'>The Drivers</h3>
             </header>

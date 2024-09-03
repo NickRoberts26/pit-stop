@@ -70,7 +70,7 @@ const Post = ({postId, content, userId, tag, createdAt, likes, comments}) => {
     <>
       <div className="border rounded-lg mb-6 p-4">
         <div className='flex justify-between items-center mb-2'>
-          <Link to={`/profile/${userId}`} className='flex items-center'>
+          <Link to={`/profile/${userId}`} className='flex items-center hover:underline'>
             <img className='w-10 rounded-full' src={poster ? `../${poster.driver.replace(/\s+/g, '').toLowerCase()}.png` : '../default-avatar.jpg'} alt="" />
             <p className='font-bold text-lg ml-3'> {poster ? `${poster.firstName} ${poster.lastName}` : 'Loading...'}</p>
             <p></p>

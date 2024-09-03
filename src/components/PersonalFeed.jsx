@@ -39,9 +39,13 @@ const PersonalFeed = ({profileId}) => {
                 <h2 className="text-3xl">Users Posts</h2>
             </header>
             <div className="bg-white border-2 border-white rounded-xl p-4 mt-6">
-                { posts.map((post, _) => {
-                    return <Post key={post.id} postId={post.id} content={post.content} tag={post.tag} likes={post.likeCount} createdAt={post.createdAt} userId={post.userId} comments={false}/>
-                })}
+                {posts.length > 0 ? (
+                    posts.map((post, _) => {
+                        return <Post key={post.id} postId={post.id} content={post.content} tag={post.tag} likes={post.likeCount} createdAt={post.createdAt} userId={post.userId} comments={false}/>
+                    })
+                ) : (
+                    <h2>No Posts!</h2>
+                )}
             </div>
         </>
     )

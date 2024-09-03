@@ -40,13 +40,24 @@ const CreateComment = ({ postId }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-        <textarea 
-            type="text" 
-            value={commentText} 
-            onChange={(e) => setCommentText(e.target.value)} 
-            placeholder="Add a comment..." 
-            className='w-full bg-slate-200 rounded-lg p-2'
-        ></textarea>
+            {currentUser ? (
+                <textarea 
+                type="text" 
+                value={commentText} 
+                onChange={(e) => setCommentText(e.target.value)} 
+                placeholder="Add a comment..." 
+                className='w-full bg-slate-200 rounded-lg p-2'
+            ></textarea>
+            ) : (
+                <textarea 
+                type="text" 
+                value={commentText} 
+                disabled
+                onChange={(e) => setCommentText(e.target.value)} 
+                placeholder="Login to comment" 
+                className='w-full bg-slate-200 rounded-lg p-2'
+                ></textarea>
+            )}
         <button type="submit" className='h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg hover:bg-slate-300'>Post</button>
         </form>
     );

@@ -48,15 +48,15 @@ const ProfileBio = ( {profileId, userDetails, setUserDetails } ) => {
 
     useEffect(() => {
         getPostsByUserId(profileId);
-    }, [])
+    }, []);
 
     return (
         <div>
             <div className='flex relative'>
-                <img className='rounded-full w-[200px] bg-white border-2 border-black' src={`../${driver.replace(/\s+/g, '').toLowerCase()}.png`} alt="" />
+                <img className='rounded-full w-[100px] lg:w-[200px] bg-white border-2 border-black' src={userDetails.driver ? `../${userDetails.driver.replace(/\s+/g, '').toLowerCase()}.png` : '../default-avatar.jpg'} alt="" />
                 <div className='ml-6'>
                     <header className='mb-4'>
-                        <h1 className='text-4xl'>{userDetails.firstName} {userDetails.lastName}</h1>
+                        <h1 className='text-xl lg:text-4xl'>{userDetails.firstName} {userDetails.lastName}</h1>
                     </header>
                     {editing ? (
                         <>
@@ -104,10 +104,10 @@ const ProfileBio = ( {profileId, userDetails, setUserDetails } ) => {
                         </>
                     ) : (
                         <>
-                            <p className='text-xl mb-6'>Favourite Team: {userDetails.team}</p>
-                            <p className='text-xl'>Favourite Driver: {userDetails.driver}</p>
+                            <p className='text-m lg:text-xl mb-4 lg:mb-6'>Favourite Team: {userDetails.team}</p>
+                            <p className='text-m lg:text-xl'>Favourite Driver: {userDetails.driver}</p>
                             {currentUser.uid === profileId ? (
-                                <button onClick={() => editing ? setEditing(false) : setEditing(true)} className='absolute top-0 right-0 text-black h-fit bg-slate-200 w-fit px-4 py-2 rounded-lg hover:bg-slate-300'>Edit Profile</button>
+                                <button onClick={() => editing ? setEditing(false) : setEditing(true)} className='absolute text-sm lg:text-m top-0 right-0 text-black h-fit bg-slate-200 w-fit px-2 py-1 lg:px-4 lg:py-2 rounded-lg hover:bg-slate-300'>Edit Profile</button>
                             ) : (
                                 <></>
                             )}

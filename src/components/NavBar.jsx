@@ -14,31 +14,33 @@ const NavBar = () => {
         }
     }
 
-    const linkClass = 'text-black text-2xl mx-4';
+    const linkClass = 'text-black text-xl mx-4 hover:underline';
 
     return (
-        <div className='bg-white w-full mb-10 font-exo'>
+        <div className='bg-white w-full mb-10 font-exo fixed top-0 border-b border-black'>
             <nav className='flex justify-between p-6'>
                 <NavLink
                 to='/'
+                className='flex items-center'
                 >
-                    <img className='w-[120px] hover:translate-x-2 transition-translate duration-200' src="../assets/logo.png" alt="" />
+                    <h1 className='text-2xl mr-4'>PitStop</h1>
+                    <img className='w-[110px] hover:translate-x-2 transition-translate duration-200' src="../assets/logo.png" alt="" />
                 </NavLink>
-                <div>
+                <div className='flex items-center'>
                     {currentUser ? (
                         <>
+                        <NavLink
+                        to={`/profile/${currentUser.uid}`}
+                        className={linkClass}
+                        >
+                            Profile
+                        </NavLink>
                         <NavLink
                         to='/'
                         className={linkClass}
                         onClick={handleLogout}
                         >
                             Logout
-                        </NavLink>
-                        <NavLink
-                        to={`/profile/${currentUser.uid}`}
-                        className={linkClass}
-                        >
-                            Profile
                         </NavLink>
                         </>
                     ) : (
