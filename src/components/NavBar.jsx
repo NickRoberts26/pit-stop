@@ -17,7 +17,7 @@ const NavBar = () => {
     const linkClass = 'text-black text-xl mx-4 hover:underline';
 
     return (
-        <div className='bg-white w-full mb-10 font-exo fixed top-0 border-b border-black'>
+        <div className='bg-white w-full mb-10 font-exo fixed top-0 z-50 border-b border-black'>
             <nav className='flex justify-between p-6'>
                 <NavLink
                 to='/'

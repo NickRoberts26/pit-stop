@@ -31,8 +31,6 @@ const PersonalFeed = ({profileId}) => {
         fetchPosts();
     }, [profileId]);
 
-    console.log(posts);
-
     return (
         <>
             <header className="mt-6">
@@ -41,7 +39,7 @@ const PersonalFeed = ({profileId}) => {
             <div className="bg-white border-2 border-white rounded-xl p-4 mt-6">
                 {posts.length > 0 ? (
                     posts.map((post, _) => {
-                        return <Post key={post.id} postId={post.id} content={post.content} tag={post.tag} likes={post.likeCount} createdAt={post.createdAt} userId={post.userId} comments={false}/>
+                        return <Post key={post.id} postId={post.id} content={post.content} tag={post.tag} likes={post.likeCount} createdAt={post.createdAt} userId={post.userId} comments={false} profileId={profileId}/>
                     })
                 ) : (
                     <h2>No Posts!</h2>
