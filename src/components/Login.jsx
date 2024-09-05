@@ -43,7 +43,7 @@ function Login() {
         </button>
       </form>
       <p className="mx-auto w-fit text-white mt-4">Don't have an account? <Link to="/signup" className="underline">Register here</Link></p>
-      <ToastContainer />
+
     </div>
   );
 }

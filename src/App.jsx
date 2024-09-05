@@ -19,7 +19,6 @@ function App() {
           <Route path='/profile/:id' element={<ProfilePage />} />
         </Route>
       </Routes>
-      <ToastContainer />
     </Router>
   )
 }
