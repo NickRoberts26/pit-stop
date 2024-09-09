@@ -64,6 +64,7 @@ function SignUp() {
           </button>
       </form>
       <p className="mx-auto w-fit text-white mt-4">Already have an account? <Link to="/login" className="underline">Login here</Link></p>
+      <ToastContainer />
     </div>
   );
 }

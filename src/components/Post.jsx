@@ -14,7 +14,7 @@ const getUsers = async () => {
   return data.docs.map((doc) => ({...doc.data(), id: doc.id}));
 }
 
-const Post = ({postId, content, userId, tag, createdAt, likes, comments, profileId}) => {
+const Post = ({postId, content, userId, tag, createdAt, likes, comments, profileId, postComments}) => {
   const [poster, setPoster] = useState(null);
   const [likeCount, setLikeCount] = useState(likes);
   const [hasLiked, setHasLiked] = useState(false);
@@ -134,7 +134,8 @@ const Post = ({postId, content, userId, tag, createdAt, likes, comments, profile
               <p className='font-bold text-lg ml-3'> {poster ? `${poster.firstName} ${poster.lastName}` : 'Loading...'}</p>
               <p></p>
             </Link>
-            {profileId == currentUser.uid ? (
+            
+            {currentUser && profileId == currentUser.uid ? (
               <>
                 <button className='text-white bg-red-600 border-2 border-red-600 hover:border-black text-xs py-0.5 px-1 rounded-md ml-4' onClick={() => handleDelete(postId)}>Delete Post</button>
                 <button className='text-black bg-slate-200 border-2 border-slate-200 hover:border-black text-xs py-0.5 px-1 rounded-md ml-4' onClick={() => setEditingPost(true)}>Edit Post</button>
@@ -159,13 +160,13 @@ const Post = ({postId, content, userId, tag, createdAt, likes, comments, profile
         </div>
         <div className='flex'>
           <div className='flex'>
-            <button onClick={handleLike} className={`${hasLiked ? 'bg-green-600 hover:bg-red-600' : 'bg-red-600 hover:bg-green-600'} text-white mr-2 border px-2 py-0.5 text-xs rounded-lg`}>Like</button>
+            <button disabled={!currentUser} onClick={handleLike} className={`${hasLiked ? 'bg-green-600 hover:bg-red-600' : 'bg-red-600 hover:bg-green-600'} text-white mr-2 border px-2 py-0.5 text-xs rounded-lg`}>Like</button>
             <div className='flex items-center text-xs'>{likeCount}</div>
           </div>
           <p className='text-gray-400 text-sm w-fit ml-auto'>{updatedAt}</p>
         </div>
         <div className='mt-2'>
-          <button className='text-xs hover:underline' onClick={() => {commentReveal ? setCommentReveal(false) : setCommentReveal(true)}}>{commentReveal ? "Hide" : "View"} Comments</button>
+          <button className='text-xs hover:underline' onClick={() => {commentReveal ? setCommentReveal(false) : setCommentReveal(true)}}>{commentReveal ? "Hide" : "View"} Comments ({postComments.length})</button>
           {commentReveal ? (
             <div>
               <CommentFeed postId={postId} getUsers={getUsers}/>
