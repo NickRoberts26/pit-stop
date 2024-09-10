@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +13,8 @@ function SignUp() {
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -36,7 +39,7 @@ function SignUp() {
         draggable: true,
         progress: undefined,
       });
-      window.location.href= "/login" ;
+      navigate("/login");
     } catch (error) {
       toast.error('Signup failed: Try Again', {
         position: "top-right",
