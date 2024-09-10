@@ -49,7 +49,7 @@ const CreatePost = () => {
     return (
         <div className='flex flex-col items-end bg-white rounded-lg p-2 mb-4'>
             <div className='w-full flex'>
-                <img className='w-[50px] h-[50px] mr-4' style={{ transform: `rotate(${rotation}deg)` }} src="src/assets/wheel.png" alt="" />
+                <img className='w-[50px] h-[50px] mr-4' style={{ transform: `rotate(${rotation}deg)` }} src="/wheel.png" alt="" />
                 <div className='w-full'>
                     {currentUser ? (
                         <textarea
