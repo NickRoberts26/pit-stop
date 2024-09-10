@@ -7,7 +7,7 @@ const DriverList = () => {
     const [drivers, setDrivers] = useState([]);
     
     useEffect(() => {
-        axios.get('/api/drivers')
+        axios.get('/api/data')
         .then(res => setDrivers(res.data))
         .catch(err => console.log(err))
     }, [])

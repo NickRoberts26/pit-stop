@@ -39,7 +39,9 @@ const Post = ({postId, content, userId, tag, createdAt, likes, comments, profile
       if (postDoc.exists()) {
         const postData = postDoc.data();
         setLikeCount(postData.likeCount || 0);
-        setHasLiked(postData.likedBy?.includes(currentUser.uid));
+        if(currentUser) {
+          setHasLiked(postData.likedBy?.includes(currentUser.uid));
+        }
       }
     };
 
