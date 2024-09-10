@@ -1,5 +1,6 @@
 # Pit Stop
 This project is a F1 themed post forum with full CRUD capabilities. It was built using React.js, Google Firebase and deployed via Vercel. The project allows for user registration/login, creation of posts, filtering content and simple profile customization.
+![pit-stop](https://github.com/user-attachments/assets/362de2c3-4d31-4b52-8845-6574a02ec420)
 
 ## Features
 - **User Registration & Login:** Create an account and log in to access the app.
